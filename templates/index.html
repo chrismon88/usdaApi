@@ -1,0 +1,29 @@
+<head>
+    <title>Nutritional Facts</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"> 
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}"> 
+</head>
+
+<body>
+<div id="container" class="content center-block">
+    
+    <h1>Nutritional Facts</h1>
+    <p>Describes what the user needs to do</p>
+
+    <form method="GET" action="search">
+        <div class="input-group mb-3">
+            <input name="query" type="text" class="form-control" placeholder="Type one word:" aria-label="search" aria-description="submit-answer">
+            <div class="input-group-append">
+                <button class="btn btn-success" type="submit">Search</button>
+            </div>
+        </div>
+    </form>
+
+    <h3>results</h3>
+
+</div>
+</body>
+
+</html>
