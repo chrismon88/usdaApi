@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request
 from recipes_api import get_API_edamam
+from usdaApi import get_ingredient
+from usdaApi import get_nutrition
 
 app = Flask(__name__)
 

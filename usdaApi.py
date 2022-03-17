@@ -4,12 +4,13 @@ from pprint import pprint
 import os
 
 #need to seperate key using os.environ
-url = 'https://api.nal.usda.gov/fdc/v1/foods/search&api_key=XpExwpHfydGY8o21Cw1qUGpLvuLlIvsKEgKTirq8'
-key = os.envrion.get('USDA_KEY')
+url = 'https://api.nal.usda.gov/fdc/v1/foods/search'
+api_key='XpExwpHfydGY8o21Cw1qUGpLvuLlIvsKEgKTirq8'
+#key = os.envrion.get('USDA_KEY')
 
 def main():
     ingredients = get_ingredient()
-    food_data, error = get_food_ingredient(ingredients, api_key) #will save return value in tuple of eather_data and error
+    food_data, error = get_food_ingredient(ingredients, api_key ) #will save return value in tuple of eather_data and error
 
     if error or len(food_data['foods']) == 0:
         print('Sorry, could not locate info on that ingredient')
@@ -36,7 +37,7 @@ def get_ingredient():
 def get_food_ingredient(ingredients):
     try:
         
-        query ={'q': ingredients, 'appid': key, 'pageSize':2} #query string
+        query ={'q': ingredients, 'appid': api_key,  'pageSize':2} #query string
         response = requests.get(url, params=query)
         response.raise_for_status()#raise exception for 400 or 500 errors
         data = response.json()#may error if response is not json
