@@ -10,7 +10,7 @@ api_key='XpExwpHfydGY8o21Cw1qUGpLvuLlIvsKEgKTirq8'
 
 def main():
     ingredients = get_ingredient()
-    food_data, error = get_food_ingredient(ingredients, api_key ) #will save return value in tuple of eather_data and error
+    food_data, error = get_food_ingredient(ingredients, api_key) #will save return value in tuple of eather_data and error
 
     if error or len(food_data['foods']) == 0:
         print('Sorry, could not locate info on that ingredient')
@@ -34,10 +34,10 @@ def get_ingredient():
     return ingredient
 
 
-def get_food_ingredient(ingredients):
+def get_food_ingredient(ingredients, api_key):
     try:
         
-        query ={'q': ingredients, 'appid': api_key,  'pageSize':2} #query string
+        query ={'query': ingredients, 'api_key': api_key, 'pageSize':2} #query string
         response = requests.get(url, params=query)
         response.raise_for_status()#raise exception for 400 or 500 errors
         data = response.json()#may error if response is not json
