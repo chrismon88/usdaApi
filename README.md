@@ -7,8 +7,8 @@
 `export FLASK_APP=app.py`
 
 * PCs:  
-`set FLASK_DEBUG=1`  
-`set FLASK_APP=app.py`
+set FLASK_DEBUG=1  
+set FLASK_APP=app.py
 
 3. Run app
 
