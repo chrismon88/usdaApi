@@ -1,0 +1,16 @@
+body {
+    margin: 40px;
+    background-color: rgb(198, 216, 127);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 15px;
+    margin-right: 250px;
+    margin-left: 250px;
+}
+h1 {
+    margin-top:90px
+}
+.title {
+    text-align: center;
+}
+
+
