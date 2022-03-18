@@ -1,0 +1,56 @@
+<head>
+    <title>Nutritional Facts</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style_search.css') }}">
+</head>
+
+<body>
+<div id="container" class="content m-4 center-block">
+    <h1 class="title">Nutritional Facts</h1>
+
+    <h1>Recipes:</h1>
+    <ul>
+            <br>
+            <h2>{{ recipe.title }}</h2>
+            <img src="{{ recipe.image }}" alt="photos">
+            {% for ingredient in recipe.ingredients %}
+                <p>{{ ingredient }}</p>
+            {% endfor %}
+            </tr>
+            <p>Calories: {{ recipe.calories_quantity }}</p>
+    </ul>   
+
+    <h1>Nutrition</h1>
+
+    <!-- todo Christian's api info - format neatly -->
+
+    {% if nutrition %} 
+        {{ nutrition }}  <!-- todo format neatly -->
+    {% else %}
+        Sorry no data 
+    {% endif %}
+
+    <h1>Images</h1>
+
+    <!-- Mina's flickr api images -->
+    
+
+
+
+    <form method="POST" action="save">
+
+        <input type="hidden" name="recipe_title" value="{{ recipe.title }}">
+        <input type="hidden" name="recipe_calorie_quantity" value="{{ recipe.calories_quantity }}">
+<!-- todo other fields - make sure data is string or number -->
+        <button type="submit">Save</button>
+
+    </form>
+
+
+</div>
+</body>
+
+</html>
+
+
