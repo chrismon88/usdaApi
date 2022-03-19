@@ -2,26 +2,37 @@
     <title>Nutritional Facts</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style_search.css') }}">
 </head>
 
 <body>
 <div id="container" class="content m-4 center-block">
     <h1 class="title">Nutritional Facts</h1>
-
-    <h1>Recipes:</h1>
+    <h4> You search for: {{ find_query }} </h4>
+    <br>
+    <h2>Recipes:</h2>
     <ul>
-        {% for x in range(5) %}
-            <br>
-            <h2>{{ recipe.title[x] }}</h2>
-            <img src="{{ recipe.image[x] }}" alt="photos">
-            {% for i in range( recipe.ingredients[x]|length ) %}
-                <p>{{recipe.ingredients[x][i]}}</p>
-            {% endfor %}
-            </tr>
-            <p>Calories: {{ recipe.calories_quantity[x] }}</p>
+        <br>
+        <h3>{{ recipe.title }}</h3>
+        <img src="{{ recipe.image }}" alt="photos">
+        {% for ingredient in recipe.ingredients %}
+            <p>{{ ingredient }}</p>
         {% endfor %}
+        </tr>
+        <h5>Calories: {{ recipe.calories_quantity }}</h5>
     </ul>   
+
+    <form method="POST" action="save">
+        <input type="hidden" name="food" value="{{ find_query }}">
+        <input type="hidden" name="recipe_title" value="{{ recipe.title }}">
+        <input type="hidden" name="recipe_ingredients" value="{{ recipe.ingredients}}">
+        <input type="hidden" name="recipe_calories" value="{{ recipe.calories_quantity }}">
+        <input type="hidden" name="recipe_photo_url" value="{{ recipe.image }}">
+        
+        <button class="btn btn-outline-primary btn-log" type="submit">Save</button>
+        
+    </form>
     
 </div>
 </body>
