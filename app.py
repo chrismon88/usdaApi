@@ -3,6 +3,7 @@ from recipes_api import get_API_edamam
 from database import add_recipe_bookmark
 from usdaApi import get_ingredient
 from usdaApi import get_nutrition
+from flickr_Api import get_photo_flickr
 
 app = Flask(__name__)
 
@@ -16,7 +17,8 @@ def search():
     find_query = request.args.get('query')
     if find_query:
         recipe = get_API_edamam(find_query)
-        return render_template('search.html',find_query=find_query , recipe=recipe)
+        flickr = get_photo_flickr(find_query)
+        return render_template('search.html',find_query=find_query , recipe=recipe, flickr=flickr)
     else:
         return render_template('error.html')
 
