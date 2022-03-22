@@ -9,6 +9,10 @@
 <div id="container" class="content m-4 center-block">
     <h1 class="title">Nutritional Facts</h1>
 
+    {{ usda_data }}
+
+    
+
     <h1>Recipes:</h1>
     <ul>
         {% for x in range(5) %}
@@ -21,7 +25,11 @@
             </tr>
             <p>Calories: {{ recipe.calories_quantity[x] }}</p>
         {% endfor %}
-    </ul>   
+    </ul>  
+    <h1>Nutrition</h1>
+<!-- my api info need to format-->
+    {{nutrition}}
+    
     
 </div>
 </body>
