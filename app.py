@@ -18,17 +18,11 @@ def search():
         recipe = get_API_edamam(food)
         nutrition = get_food_nutrition(food)
 #flicker images
-        return render_template('search_result.html',find_query=food , recipe=recipe, nutrition=nutrition)
+        return render_template('search_results.html',find_query=food , recipe=recipe, nutrition=nutrition)
     else:
         return render_template('error.html')
 
 
-# @app.route('/save-data')
-# def save_data():
-#     #need to code database/db.py file
-#     result = db.save_data('example')
-#     print(result)
-#     return redirect('/')
 
 
 if __name__ == '__main__':

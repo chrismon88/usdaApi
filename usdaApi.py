@@ -8,20 +8,20 @@ url = 'https://api.nal.usda.gov/fdc/v1/foods/search'
 api_key='XpExwpHfydGY8o21Cw1qUGpLvuLlIvsKEgKTirq8'
 #key = os.envrion.get('USDA_KEY')
 
-def main():
-    ingredients = get_ingredient()
-    food_data, error = get_food_nutrition(ingredients, api_key) #will save return value in tuple of eather_data and error
+# def main():
+#     ingredients = get_ingredient()
+#     food_data, error = get_food_nutrition(ingredients, api_key) #will save return value in tuple of eather_data and error
 
-    if error or len(food_data['foods']) == 0:
-        print('Sorry, could not locate info on that ingredient')
-    else:
-        ingredient_nutrition = get_nutrition(food_data)
-        #print(f'The nutitional value of the ingredient you entered is {ingredient_nutrition}')
-        for i in ingredient_nutrition:
-            print(i['foodCategory'])
-            for k in i['foodNutrients']:
-                print('\t',k['nutrientName'])
-            print('*************')
+#     if error or len(food_data['foods']) == 0:
+#         print('Sorry, could not locate info on that ingredient')
+#     else:
+#         ingredient_nutrition = get_nutrition(food_data)
+#         #print(f'The nutitional value of the ingredient you entered is {ingredient_nutrition}')
+#         for i in ingredient_nutrition:
+#             print(i['foodCategory'])
+#             for k in i['foodNutrients']:
+#                 print('\t',k['nutrientName'])
+#             print('*************')
 """ test method
 def get_ingredient():
     ingredient  = '' # checking input is not empty string
@@ -62,11 +62,14 @@ def extract_data(data):
 def get_nutrition(food_data):
      try:
          #extract 2-3 data, return as object
-        nutrition = food_data['foods']
+        nutrition = food_data['foods','foodNutrients','nutrientName']
+        calories = food_data['foods','foodNutrients','nutrientName']
+        carbs = food_data['foods','foodNutrients','nutrientName']
         return {
-            'nutrientName': nutrients
-            # 'calories':calories,
-            # 'carbohydrates':carbs
+
+            'nutrientName': nutrition,
+            'calories':calories,
+            'carbohydrates':carbs
 
         }
      except KeyError:
@@ -74,5 +77,5 @@ def get_nutrition(food_data):
          return 'Unknown'
 
 
-if __name__ == '__main__':
-    main()
+# if __name__ == '__main__':
+#     main()
