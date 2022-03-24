@@ -12,6 +12,12 @@
     <h4> You search for: {{ find_query }} </h4>
     <img src="{{ flickr }}" alt="photos">
     <br>
+    <p>Nutrition:</p>
+    {%for nutrient in nutrition%}
+    <li>{{nutrient}}</li>
+    {% endfor %}
+
+    <br>
     <h2>Recipes:</h2>
     <ul>
         <br>

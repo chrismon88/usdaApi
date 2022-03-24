@@ -1,8 +1,7 @@
 from flask import Flask, render_template, request
 from recipes_api import get_API_edamam
 from database import add_recipe_bookmark
-from usdaApi import get_ingredient
-from usdaApi import get_nutrition
+from usdaApi import get_food_nutrition
 from flickr_Api import get_photo_flickr
 
 app = Flask(__name__)
@@ -15,10 +14,13 @@ def homepage():
 def search():
     print(request.args)
     find_query = request.args.get('query')
+    print(find_query)
     if find_query:
         recipe = get_API_edamam(find_query)
         flickr = get_photo_flickr(find_query)
-        return render_template('search.html',find_query=find_query , recipe=recipe, flickr=flickr)
+        nutrition = get_food_nutrition(find_query)
+        print(nutrition)
+        return render_template('search.html',find_query=find_query , recipe=recipe, flickr=flickr, nutrition=nutrition[0])
     else:
         return render_template('error.html')
 
