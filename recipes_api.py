@@ -3,17 +3,18 @@ import requests
 import random
 from pprint import pprint
 
+# remove keys from GitHub
 application_id = '82fad7ff'
 applications_keys = '66a21d5e09d78723c3f5153046e1386c'
 base_url = 'https://api.edamam.com/api/recipes/v2'
-random_number = random.randint(0,9)
+random_number = random.randint(0,9)  # is this used?
 
 def get_API_edamam(user_input):
     try: 
         query = build_query(user_input, application_id, applications_keys)
         response = make_api_request(base_url, query)
         recipe = extract_data(response)
-        return recipe
+        return recipe  # return a tuple of recipe, None
     except Exception as exc:
         print(exc)
         return None, exc

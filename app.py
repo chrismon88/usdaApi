@@ -15,6 +15,9 @@ def search():
     print(request.args)
     find_query = request.args.get('query')
     print(find_query)
+
+    # how are you handling errors? 
+
     if find_query:
         recipe = get_API_edamam(find_query)
         flickr = get_photo_flickr(find_query)
@@ -26,6 +29,9 @@ def search():
 
 @app.route('/save', methods=['POST'])
 def save_bookmark():
+
+    # how are you handling errors, for example, saving duplicate foods? 
+
     data = request.form 
     print(data)
     food = request.form["food"]
