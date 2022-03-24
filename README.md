@@ -17,3 +17,7 @@ set FLASK_APP=app.py
 4. Add code and templates
 
 You'll work in app.py, github_api.py and with files in the templates directory.
+
+
+** Edit this to describe how to install and run your app
+** screenshots would be helpful

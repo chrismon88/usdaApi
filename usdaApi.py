@@ -51,7 +51,9 @@ def get_food_nutrition(ingredient):
 def get_nutrition(food_data):
      try:
          #extract 2-3 data, return as object
+         # are you returning the numeric values of the nutrition facts? 
         data = []
+        
         for x in range(len(food_data['foods'][0]['foodNutrients'])):
             #for k in x(len(food_data[k,'nutrientName'])):
             nutrition = food_data['foods'][0]['foodNutrients'][x]['nutrientName']

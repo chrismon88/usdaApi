@@ -6,13 +6,14 @@ create_table_sql = 'CREATE TABLE IF NOT EXISTS bookmarks (food TEXT, recipe_titl
 def add_recipe_bookmark(food, title, ingredients, calories, url):
     try:
         with sqlite3.connect(db) as conn:
-            conn.execute(create_table_sql)
+            conn.execute(create_table_sql) # create the table before this function is called
             conn.execute('INSERT or IGNORE INTO bookmarks VALUES (?, ?, ?, ?, ?)', (food, title, ingredients, calories, url))
         conn.close()
         data = get_all_bookmarks()
         return data
     except sqlite3.IntegrityError as e:
-        raise ValueError('error') from e
+        # log some error information here
+        raise ValueError('error') from e  
         
 def get_all_bookmarks():
     with sqlite3.connect(db) as conn:
@@ -21,6 +22,6 @@ def get_all_bookmarks():
         data_list = []
         for r in rows:
             data_list.append(r)
-        return data_list
+        return data_list  # this return statement is before the db close so the db will never get closed
     conn.close()
 
