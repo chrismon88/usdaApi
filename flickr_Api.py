@@ -2,8 +2,7 @@ import requests
 from pprint import pprint
 
 def get_photo_flickr(user_input):
-    url = "https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=7525dbfa809ab56fc74ad95ed1b9b249&tags= " \
-          f"{user_input}+&text=food&sort=relevance+&accuracy=100%25&format=json&nojsoncallback=1"
+    url = f"https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=7525dbfa809ab56fc74ad95ed1b9b249&&text={user_input}&sort=relevance&extras=food&format=json&nojsoncallback=1"
     response = requests.get(url).json()
     id = response['photos']['photo'][0]['id']
     server_id = response['photos']['photo'][0]['server']
