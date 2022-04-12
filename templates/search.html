@@ -9,12 +9,13 @@
 <body>
 <div id="container" class="content m-4 center-block">
     <h1 class="title">Nutritional Facts</h1>
-    <h4> You search for: {{ find_query }} </h4>
+    <h4> You searched for: {{ find_query }} </h4>
     <img src="{{ flickr }}" alt="photos">
     <br>
     <p>Nutrition:</p>
-    {%for nutrient in nutrition%}
-    <li>{{nutrient}}</li>
+    <!-- template tags with spacing are easier to read -->
+    {% for nutrient in nutrition %}
+    <li>{{ nutrient }}</li>
     {% endfor %}
 
     <br>
@@ -22,7 +23,7 @@
     <ul>
         <br>
         <h3>{{ recipe.title }}</h3>
-        <img src="{{ recipe.image }}" alt="photos">
+        <img src="{{ recipe.image }}" alt="photos">  <!-- use descriptive text for alt text -->
         {% for ingredient in recipe.ingredients %}
             <p>{{ ingredient }}</p>
         {% endfor %}
