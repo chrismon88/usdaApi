@@ -18,10 +18,11 @@ def add_recipe_bookmark(food, title, ingredients, calories, url):
 def get_all_bookmarks():
     with sqlite3.connect(db) as conn:
         conn.row_factory = sqlite3.Row
-        rows = conn.execute('SELECT * FROM bookmarks' )
+        rows = conn.execute('SELECT * FROM bookmarks')
         data_list = []
         for r in rows:
             data_list.append(r)
-        return data_list  # this return statement is before the db close so the db will never get closed
-    conn.close()
-
+    
+    return data_list  # fix the order of statements
+    # this return statement was insdie the connection  the db close so the db will never get closed
+    

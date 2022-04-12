@@ -5,7 +5,8 @@ def get_photo_flickr(user_input):
     # use a query string instead of a really long string
     # the API key should not be in the code 
     # needs error handling
-    # what if no photo is found?
+    # what if no photo is found?  
+    # This code returns an error. At the least, check if any information on photos is returned. 
     url = f"https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=7525dbfa809ab56fc74ad95ed1b9b249&&text={user_input}&sort=relevance&extras=food&format=json&nojsoncallback=1"
     response = requests.get(url).json()
     id = response['photos']['photo'][0]['id']

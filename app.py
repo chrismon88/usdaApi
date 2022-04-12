@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 from recipes_api import get_API_edamam
-from database import add_recipe_bookmark
+from database import add_recipe_bookmark, get_all_bookmarks
 from usdaApi import get_food_nutrition
 from flickr_Api import get_photo_flickr
 
@@ -23,14 +23,14 @@ def search():
         flickr = get_photo_flickr(find_query)
         nutrition = get_food_nutrition(find_query)
         print(nutrition)
-        return render_template('search.html',find_query=find_query , recipe=recipe, flickr=flickr, nutrition=nutrition[0])
+        return render_template('search.html', find_query=find_query, recipe=recipe, flickr=flickr, nutrition=nutrition[0])
     else:
         return render_template('error.html')
 
 @app.route('/save', methods=['POST'])
 def save_bookmark():
 
-    # how are you handling errors, for example, saving duplicate foods? 
+    # how are you handling errors, for example, missing data in the form? 
 
     data = request.form 
     print(data)
@@ -41,6 +41,14 @@ def save_bookmark():
     url = request.form["recipe_photo_url"]   
     data_from_database = add_recipe_bookmark(food, title, ingredients, calories, url)
     return render_template('saved_recipes.html', data_from_database=data_from_database) 
+
+
+# Recommend a new route for the saved recipies so user can access directly
+@app.route('/saved_recipes')
+def saved_recipes():
+    data_from_database = get_all_bookmarks()
+    return render_template('saved_recipes.html', data_from_database=data_from_database) 
+
 
 if __name__ == '__main__':
     app.run()

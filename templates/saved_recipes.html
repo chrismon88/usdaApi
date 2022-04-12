@@ -12,14 +12,13 @@
 
     <div class="box">
         <ul>
-            {% for x in range( data_from_database|length ) %}
-                <h5> {{ data_from_database[x][0] }} </h5>
-                <p> {{ data_from_database[x][1] }} </p>            
-                
-                <p> {{ data_from_database[x][2] }} </p>
-            
-                <p>Calories: {{ data_from_database[x][3] }} </p>
-                <img src="{{ data_from_database[x][4] }}" alt="photos">
+            <!-- you can use a python-line for loop which is simpler  -->
+            {% for item in data_from_database %}
+                <h5> {{ item[0] }} </h5>
+                <p> {{ item[1] }} </p>            
+                <p> {{ item[2] }} </p>
+                <p>Calories: {{ item[3] }} </p>
+                <img src="{{ item[4] }}" alt="{{ item[0] }}">   <!-- use something useful for alt text or omit -->
                 <br>
                 <hr>
             {% endfor %}
@@ -31,6 +30,8 @@
 </html>
 
 <style type="text/css">
+
+    /* use an external stylesheet for consistency  */
     body {
         text-align: left;
     }
@@ -44,11 +45,11 @@
         margin-top: 70px;
     }
     hr {
-    display: block;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid rgb(0, 0, 0);
-    margin: 1em 0;
-    padding: 0;
+        display: block;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid rgb(0, 0, 0);
+        margin: 1em 0;
+        padding: 0;
     }
 </style>

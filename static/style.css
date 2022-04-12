@@ -3,6 +3,8 @@ body {
     background-color: rgb(198, 216, 127);
     text-align: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* These are large margins - make your browser window narrower - how much space does 
+    the user have for entering the ingredient? */
     margin-right: 250px;
     margin-left: 250px;
 }

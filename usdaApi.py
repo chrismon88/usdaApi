@@ -26,6 +26,8 @@ def get_nutrition(food_data):
      try:
          #extract 2-3 data, return as object
          # are you returning the numeric values of the nutrition facts? 
+         # This returns a list of the names of the nutritional values, so "Calcium" and "Cholesterol"
+         # but does not include the actual values of these things
         data = []
         
         for x in range(len(food_data['foods'][0]['foodNutrients'])):
@@ -35,5 +37,5 @@ def get_nutrition(food_data):
         return data
      except KeyError:
          print('This data is not in the format expected')
-         return 'Unknown'
+         return 'Unknown'   # does the caller check for this value?
 
